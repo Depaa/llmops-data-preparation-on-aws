@@ -1,0 +1,17 @@
+{
+  "name": "dprocess-extracting-job",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-textract": "^3.572.0",
+    "@middy/core": "^5.3.3",
+    "@middy/http-error-handler": "^5.3.3",
+    "@middy/input-output-logger": "^5.3.3"
+  }
+}

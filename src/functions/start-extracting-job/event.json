@@ -1,0 +1,38 @@
+{
+    "Records": [
+        {
+            "eventVersion": "2.1",
+            "eventSource": "aws:s3",
+            "awsRegion": "eu-central-1",
+            "eventTime": "2024-05-10T14:38:57.275Z",
+            "eventName": "ObjectCreated:Put",
+            "userIdentity": {
+                "principalId": "AWS:AROAZJHTXTVW4SGDZGOHD:m.depascale@reply.it"
+            },
+            "requestParameters": {
+                "sourceIPAddress": "87.14.191.27"
+            },
+            "responseElements": {
+                "x-amz-request-id": "4B71BADBENH1QHKP",
+                "x-amz-id-2": "GSBd4WpHJA4Jwl9WaQFDp3uTRWoYTEicSgJXbLrKZf+xvotrvOenKQrryIwYI1+1DjHscCwsPZDaKVojJqA0RB/FlfGUWg8Z"
+            },
+            "s3": {
+                "s3SchemaVersion": "1.0",
+                "configurationId": "tf-s3-lambda-20240510133213372100000004",
+                "bucket": {
+                    "name": "dev-eu-central-1-data-prep-bronze20240510132821038000000001",
+                    "ownerIdentity": {
+                        "principalId": "A3HJ3WDGVIDUQQ"
+                    },
+                    "arn": "arn:aws:s3:::dev-eu-central-1-data-prep-bronze20240510132821038000000001"
+                },
+                "object": {
+                    "key": "PublicWaterMassMailing.pdf",
+                    "size": 2681358,
+                    "eTag": "29b850959d42f2c505523057d092cb27",
+                    "sequencer": "00663E318128515FE6"
+                }
+            }
+        }
+    ]
+}

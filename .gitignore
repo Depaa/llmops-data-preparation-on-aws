@@ -1,0 +1,6 @@
+.terraform
+builds
+*lock*
+*tfstate*
+docs/architecture*
+node_modules
