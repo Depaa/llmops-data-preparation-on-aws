@@ -55,6 +55,15 @@ module "start_extracting_job_lambda_function" {
       resources = [
         "arn:aws:s3:::${var.bronze_bucket_name}/*"
       ]
+    },
+    s3_silver = {
+      effect = "Allow",
+      actions = [
+        "s3:PutObject"
+      ],
+      resources = [
+        "arn:aws:s3:::${var.silver_bucket_name}/*"
+      ]
     }
   }
 }
@@ -74,6 +83,7 @@ resource "aws_s3_bucket_notification" "lambda_trigger" {
   lambda_function {
     lambda_function_arn = module.start_extracting_job_lambda_function.lambda_function_arn
     events              = ["s3:ObjectCreated:*"]
+    filter_prefix       = "input/"
     filter_suffix       = ".pdf"
   }
 }
