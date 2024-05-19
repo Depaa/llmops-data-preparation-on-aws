@@ -39,9 +39,7 @@ module "start_extracting_job_lambda_function" {
       effect = "Allow",
       actions = [
         "textract:StartDocumentTextDetection",
-        "textract:StartDocumentAnalysis",
-        "textract:GetDocumentTextDetection",
-        "textract:GetDocumentAnalysis"
+        # "textract:StartDocumentAnalysis"
       ],
       resources = [
         "*"
@@ -59,6 +57,7 @@ module "start_extracting_job_lambda_function" {
     s3_silver = {
       effect = "Allow",
       actions = [
+        "s3:GetObject",
         "s3:PutObject"
       ],
       resources = [
@@ -116,6 +115,7 @@ module "process_extracting_job_lambda_function" {
     GOLD_BUCKET_NAME       = var.gold_bucket_name
     NOTIFICATION_TOPIC_ARN = aws_sns_topic.jobs_notification.arn
     NOTIFICATION_ROLE_ARN  = aws_iam_role.textract_role.arn
+    METADATA_DATABASE_NAME = var.metadata_database_name
   })
 
   logging_log_format            = "JSON"
@@ -132,10 +132,8 @@ module "process_extracting_job_lambda_function" {
     textract = {
       effect = "Allow",
       actions = [
-        "textract:StartDocumentTextDetection",
-        "textract:StartDocumentAnalysis",
         "textract:GetDocumentTextDetection",
-        "textract:GetDocumentAnalysis"
+        # "textract:GetDocumentAnalysis"
       ],
       resources = [
         "*"
@@ -144,7 +142,7 @@ module "process_extracting_job_lambda_function" {
     s3 = {
       effect = "Allow",
       actions = [
-        "s3:GetObject"
+        "s3:PutObject"
       ],
       resources = [
         "arn:aws:s3:::${var.silver_bucket_name}/*"
@@ -157,6 +155,16 @@ module "process_extracting_job_lambda_function" {
       ],
       resources = [
         aws_sqs_queue.jobs_queue.arn
+      ]
+    },
+    dynamodb = {
+      effect = "Allow",
+      actions = [
+        "dynamodb:PutItem"
+      ],
+      resources = [
+        "${var.metadata_database_arn}",
+        "${var.metadata_database_arn}/*"
       ]
     }
   }

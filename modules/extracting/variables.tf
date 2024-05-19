@@ -18,3 +18,11 @@ variable "silver_bucket_name" {
 variable "gold_bucket_name" {
   type = string
 }
+
+variable "metadata_database_name" {
+  type = string
+}
+
+variable "metadata_database_arn" {
+  type = string
+}
