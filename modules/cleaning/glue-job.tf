@@ -46,6 +46,24 @@ resource "aws_iam_policy" "glue_policy" {
         "arn:aws:s3:::${var.gold_bucket_name}",
         "arn:aws:s3:::${var.gold_bucket_name}/*"
       ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents",
+        "logs:GetLogEvents",
+        "logs:FilterLogEvents"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "cloudwatch:PutMetricData"
+      ],
+      "Resource": "*"
     }
   ]
 }
