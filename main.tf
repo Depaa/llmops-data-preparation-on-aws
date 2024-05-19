@@ -25,3 +25,15 @@ module "extracting_layer" {
   metadata_database_arn  = module.storage.metadata_database_arn
   is_debug_on            = local.is_debug_on
 }
+
+module "cleaning_layer" {
+  source = "./modules/cleaning"
+
+  prefix                 = "${var.environment}-${var.region}-${var.project}"
+  bronze_bucket_name     = module.storage.bronze_bucket_name
+  silver_bucket_name     = module.storage.silver_bucket_name
+  gold_bucket_name       = module.storage.gold_bucket_name
+  metadata_database_name = module.storage.metadata_database_name
+  metadata_database_arn  = module.storage.metadata_database_arn
+  is_debug_on            = local.is_debug_on
+}
