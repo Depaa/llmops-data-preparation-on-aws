@@ -132,8 +132,10 @@ module "process_extracting_job_lambda_function" {
     textract = {
       effect = "Allow",
       actions = [
+        "textract:StartDocumentTextDetection",
+        "textract:StartDocumentAnalysis",
         "textract:GetDocumentTextDetection",
-        # "textract:GetDocumentAnalysis"
+        "textract:GetDocumentAnalysis"
       ],
       resources = [
         "*"
@@ -142,7 +144,8 @@ module "process_extracting_job_lambda_function" {
     s3 = {
       effect = "Allow",
       actions = [
-        "s3:PutObject"
+        "s3:PutObject",
+        "s3:GetObject"
       ],
       resources = [
         "arn:aws:s3:::${var.silver_bucket_name}/*"

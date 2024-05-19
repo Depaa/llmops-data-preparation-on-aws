@@ -17,7 +17,8 @@ const saveMetadata = async (id, pages) => {
         TableName: process.env.METADATA_DATABASE_NAME,
         Item: {
             id,
-            pages
+            pages,
+            createdAt: new Date().toISOString()
         }
     };
     console.debug(params);
@@ -27,7 +28,7 @@ const saveMetadata = async (id, pages) => {
 
 const saveText = async (id, data) => {
     const params = {
-        Bucket: process.env.OUTPUT_BUCKET_NAME,
+        Bucket: process.env.SILVER_BUCKET_NAME,
         Key: `${id}.json`,
         Body: JSON.stringify(data)
     };
