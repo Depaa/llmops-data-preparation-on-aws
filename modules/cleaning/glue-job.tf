@@ -64,6 +64,13 @@ resource "aws_iam_policy" "glue_policy" {
         "cloudwatch:PutMetricData"
       ],
       "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "glue:BatchGetCustomEntityTypes"
+      ],
+      "Resource": "*"
     }
   ]
 }
