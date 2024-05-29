@@ -1,0 +1,20 @@
+{
+    "Records": [
+        {
+            "s3": {
+                "s3SchemaVersion": "1.0",
+                "configurationId": "tf-s3-lambda-20240528134539323000000003",
+                "bucket": {
+                    "name": "dev-eu-central-1-data-prep-gold20240510132821040400000002",
+                    "arn": "arn:aws:s3:::dev-eu-central-1-data-prep-gold20240510132821040400000002"
+                },
+                "object": {
+                    "key": "6bee589401c480cbd5c7d132a53d477c998306724ad07a22e73c60d6bda96248/run-1716904025496-part-r-00000",
+                    "size": 11119,
+                    "eTag": "bb0115b870483bebaa78377f39046b82",
+                    "sequencer": "006655E0622C43AE46"
+                }
+            }
+        }
+    ]
+}
